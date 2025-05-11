@@ -1,0 +1,52 @@
+{
+  "id": "cosmoboys",
+  "title": "Космопарни",
+  "description": "Это небольшая игра про космических ковбоев, вдохновлённая фантастическими мультфильмами эпохи VHS-кассет, спагетти-вестернами и музыкальными клипами Muse — «Knights of Cydonia» и Falling in Reverse — «All my Life»",
+  "version": "1.0",
+  "compatibility": {
+    "minimum": "13",
+    "verified": "13.342"
+  },
+  "authors": [
+    {
+      "name": "Nikita Belov",
+      "email": "comAT0Zz@gmail.com",
+      "flags": {}
+    }
+  ],
+  "esmodules": [
+    "module/cosmoboys.mjs"
+  ],
+  "styles": [
+    "styles/cosmoboys.css"
+  ],
+  "packs": [
+    {
+      "name": "cosmo-rolltables",
+      "label": "Генераторы",
+      "system": "cosmoboys",
+      "path": "packs/rolltables",
+      "type": "RollTable",
+      "private": false,
+      "flags": {},
+      "ownership": {
+          "PLAYER": "OBSERVER",
+          "ASSISTANT": "OWNER"
+      }
+    }
+  ],
+  "languages": [
+    {
+      "lang": "ru",
+      "name": "Russian",
+      "path": "lang/ru.json",
+      "flags": {}
+    }
+  ],
+  "socket": true,
+  "gridDistance": 1,
+  "gridUnits": "m",
+  "url": "https://github.com/comat0zz/fvtt-cosmoboys",
+  "manifest": "https://github.com/comat0zz/fvtt-cosmoboys//system.json",
+  "download": "https://github.com/comat0zz/fvtt-cosmoboys//see-you-in-hell.zip"
+}

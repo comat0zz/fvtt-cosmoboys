@@ -1,0 +1,17 @@
+/* Reset bases */
+
+@font-face {
+    font-family: 'Lumberjack Rough';
+    src: local('Lumberjack Rough'), url('./fonts/Lumberjack Rough.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Corki-Regular';
+    src: local('Corki-Regular'), url('./fonts/Corki-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* All sheets */

@@ -1,0 +1,24 @@
+{
+    "Actor": {
+        "types": [
+            "hero"
+        ]
+    },
+    "templates": {
+        "baseActor": {
+            "nickname": "",
+            "description": "",
+            "items": [],
+            "char_number": 7,
+            "hp": 0,
+            "archetype": "",
+            "flash": "",
+            "flash_desc": "",
+            "weapon": "",
+            "carriage": ""
+        }
+    },
+    "hero": {
+      "templates": ["baseActor"]
+    }
+}
