@@ -29,28 +29,15 @@ Hooks.once("init", async function() {
   
   CONFIG.CZT = CZT;
   CONFIG.Actor.documentClass = SimpleActor;
-  // CONFIG.Item.documentClass = SimpleItem;
 
-  // Register System Settings
   registerSystemSettings();
 
-  
-  // Register sheet application classes
   foundry.documents.collections.Actors.unregisterSheet("core", foundry.appv1.sheets.ActorSheet);
   foundry.documents.collections.Actors.registerSheet(game.system.id, SimpleActorSheet, { 
     types: ["hero"], 
     makeDefault: true,
     label: "TYPES.Actor.Hero"
   });
-
-  /* Сделаю через RollTables
-  foundry.documents.collections.Items.unregisterSheet("core", foundry.appv1.sheets.ItemSheet);
-  foundry.documents.collections.Items.registerSheet(game.system.id, SimpleItemSheet, { 
-    types: ["archetype", "flash"], 
-    makeDefault: true,
-    //label: "TYPES.Item."
-  });
-  */
 
   initializeHandlebars();
 
