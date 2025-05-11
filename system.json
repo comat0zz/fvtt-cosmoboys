@@ -5,7 +5,7 @@
   "version": "1.0",
   "compatibility": {
     "minimum": "13",
-    "verified": "13.342"
+    "verified": "13"
   },
   "authors": [
     {
@@ -27,6 +27,19 @@
       "system": "cosmoboys",
       "path": "packs/rolltables",
       "type": "RollTable",
+      "private": false,
+      "flags": {},
+      "ownership": {
+          "PLAYER": "OBSERVER",
+          "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "cosmo-macros",
+      "label": "Создать приключение",
+      "system": "cosmoboys",
+      "path": "packs/macros",
+      "type": "Macro",
       "private": false,
       "flags": {},
       "ownership": {

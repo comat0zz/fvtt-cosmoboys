@@ -1,15 +1,8 @@
-2025/05/11-22:30:58.594358 7fbd4b1bc700 Recovering log #10
-2025/05/11-22:30:58.603073 7fbd4b1bc700 Delete type=3 #8
-2025/05/11-22:30:58.603108 7fbd4b1bc700 Delete type=0 #10
-2025/05/11-22:41:17.929589 7fbd3f271700 Level-0 table #15: started
-2025/05/11-22:41:17.933820 7fbd3f271700 Level-0 table #15: 61192 bytes OK
-2025/05/11-22:41:17.937652 7fbd3f271700 Delete type=0 #13
-2025/05/11-22:41:17.948429 7fbd3f271700 Manual compaction at level-0 from '!tables!74wujyPcno3TijQD' @ 72057594037927935 : 1 .. '!tables.results!y7r6E6z8vLZiqsFU.vHq5rViNldeZinbv' @ 0 : 0; will stop at (end)
-2025/05/11-22:41:17.955441 7fbd3f271700 Manual compaction at level-1 from '!tables!74wujyPcno3TijQD' @ 72057594037927935 : 1 .. '!tables.results!y7r6E6z8vLZiqsFU.vHq5rViNldeZinbv' @ 0 : 0; will stop at '!tables.results!ptsj6MEGuusqZZMD.z8a3XxknuzlXazap' @ 3476 : 1
-2025/05/11-22:41:17.955448 7fbd3f271700 Compacting 1@1 + 1@2 files
-2025/05/11-22:41:17.961010 7fbd3f271700 Generated table #16@1: 140 keys, 51768 bytes
-2025/05/11-22:41:17.961026 7fbd3f271700 Compacted 1@1 + 1@2 files => 51768 bytes
-2025/05/11-22:41:17.964674 7fbd3f271700 compacted to: files[ 0 0 1 0 0 0 0 ]
-2025/05/11-22:41:17.964729 7fbd3f271700 Delete type=2 #15
-2025/05/11-22:41:17.964811 7fbd3f271700 Delete type=2 #11
-2025/05/11-22:41:17.964900 7fbd3f271700 Manual compaction at level-1 from '!tables.results!ptsj6MEGuusqZZMD.z8a3XxknuzlXazap' @ 3476 : 1 .. '!tables.results!y7r6E6z8vLZiqsFU.vHq5rViNldeZinbv' @ 0 : 0; will stop at (end)
+2025/05/11-23:35:10.839741 7fa32d28e700 Recovering log #26
+2025/05/11-23:35:10.848393 7fa32d28e700 Delete type=0 #26
+2025/05/11-23:35:10.848419 7fa32d28e700 Delete type=3 #24
+2025/05/11-23:35:38.781234 7fa322b65700 Level-0 table #31: started
+2025/05/11-23:35:38.781253 7fa322b65700 Level-0 table #31: 0 bytes OK
+2025/05/11-23:35:38.784939 7fa322b65700 Delete type=0 #29
+2025/05/11-23:35:38.788662 7fa322b65700 Manual compaction at level-0 from '!tables!74wujyPcno3TijQD' @ 72057594037927935 : 1 .. '!tables.results!y7r6E6z8vLZiqsFU.vHq5rViNldeZinbv' @ 0 : 0; will stop at (end)
+2025/05/11-23:35:38.795488 7fa322b65700 Manual compaction at level-1 from '!tables!74wujyPcno3TijQD' @ 72057594037927935 : 1 .. '!tables.results!y7r6E6z8vLZiqsFU.vHq5rViNldeZinbv' @ 0 : 0; will stop at (end)
