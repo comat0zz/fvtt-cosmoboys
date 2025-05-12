@@ -3,7 +3,8 @@
 // указывается путь от корня каталога с шаблонами 
 export const TemplatesList = {
     'ActorSheets': [
-        'sheets/actors/hero-sheet.hbs'
+        'sheets/actors/hero-sheet.hbs',
+        'sheets/actors/info-tab-sheet.hbs'
     ],
     'ItemSheets': [
         'sheets/items/archetype-sheet.hbs',

@@ -1,3 +1,5 @@
+import { SYSTEM } from "../configs/system.mjs";
+
 // Хелперы общего назначения
 export const registerHandlebarsShareHelpers = async function () {
   
@@ -8,7 +10,7 @@ export const registerHandlebarsShareHelpers = async function () {
 
   // Отвязываем картинки от путей
   Handlebars.registerHelper('get_assets', function (asset) {
-    return `${game.assets_path}/${asset}`;
+    return `${SYSTEM.assets_path}/${asset}`;
   });
 
   // if equal v1 == v2
@@ -26,6 +28,11 @@ export const registerHandlebarsShareHelpers = async function () {
   // if v1 < v2
   Handlebars.registerHelper('iflt', function (v1, v2, options) {
     if (v1 < v2) return options.fn(this);
+    else return options.inverse(this);
+  });
+  // if v1 <= v2
+  Handlebars.registerHelper('iflteq', function (v1, v2, options) {
+    if (v1 <= v2) return options.fn(this);
     else return options.inverse(this);
   });
 

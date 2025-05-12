@@ -1,5 +1,10 @@
 /* Reset bases */
 
+:root { 
+  --cosmoboys-color-brown: #573425;
+  --cosmoboys-color-gray: #CCC8B4;
+}
+
 @font-face {
     font-family: 'Lumberjack Rough';
     src: local('Lumberjack Rough'), url('./fonts/Lumberjack Rough.otf') format('opentype');
@@ -15,6 +20,12 @@
 }
 
 /* All sheets */
+.window-content {
+    backdrop-filter: unset;
+    -webkit-backdrop-filter: unset;
+
+}
+
 .window-content .cosmoboys-wrapper .cosmoboys-row,
 .message-content .cosmoboys-wrapper .cosmoboys-row {
   display: flex;
@@ -32,8 +43,8 @@
 }
 
 #chat .chat-log .chat-message,
-.cosmoboys.actor.sheet {
-    background: url('../assets/cover.png') no-repeat; 
+form.cosmoboys .window-content {
+    background: url('../assets/cover-re.png') no-repeat; 
     background-size: 100% 100%; 
 }
 
@@ -60,14 +71,171 @@
     font-size: var(--font-size-18);
 }
 
+/* Nav tabs */
+
+.cosmoboys nav.tabs {
+    border:0;
+    color: #000;
+    font-family: 'Corki-Regular';
+}
+
+.cosmoboys nav.tabs [data-tab],
+.cosmoboys nav.tabs [data-tab].active {
+    color: #000;
+}
+
+.cosmoboys nav.tabs [data-tab].active, 
+.cosmoboys nav.tabs [data-tab]:hover {
+    text-shadow: 0 0 10px var(--cosmoboys-color-brown);
+    font-weight: bold;
+}
+
 /* Dices Roll */
 
 /* Actor Sheet */
 .cosmoboys-wrapper {
     color: black;
-    padding: 10px 20px 20px 30px;
+    padding: 15px 15px 15px 15px;
+    font-family: 'Lumberjack Rough';
 }
 
 .cosmoboys-sides-right img {
-    height: 250px;
+    height: 260px;
+    border-radius: 3%;
+    box-shadow: 0 0 4px 0px #573425;
+}
+
+.cosmoboys-wrapper input[type=text] {
+    border: 0;
+    background-color: rgba(0, 0, 0, 0);
+    color: #000;
+
+}
+
+.cosmoboys-wrapper input[type=text]:focus {
+    outline: none
+}
+
+.cosmoboys-wrapper .brown-left-bottom input {
+      -webkit-box-shadow: -5px 5px 4px -1px rgba(87, 52, 37, 0.47);
+    -moz-box-shadow: -5px 5px 4px -1px rgba(87, 52, 37, 0.47);
+    box-shadow: -5px 5px 4px -1px rgba(87, 52, 37, 0.47);
+}
+
+.cosmoboys-wrapper .margin-5px {
+    margin-bottom: 5px;
+}
+
+.cosmoboys-wrapper .margin-10px {
+    margin-bottom: 10px;
+}
+
+.cosmoboys-wrapper .cosmoboys-wounds-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+    display: -webkit-flex;
+    -webkit-flex-direction: row;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.cosmoboys-wrapper .cosmoboys-wounds-list li {
+    width: 40px;
+    height: 37px;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+    cursor: pointer;
+}
+
+.cosmoboys-wrapper .cosmoboys-rolls {
+    margin-top: 10px;
+    font-size: var(--font-size-28);
+    text-transform: uppercase;
+}
+
+.cosmoboys-wrapper .cosmoboys-rolls .cosmoboys-roll-cosmo,
+.cosmoboys-wrapper .cosmoboys-rolls .cosmoboys-roll-boy {
+    cursor: pointer;
+    font-family: 'Corki-Regular';
+}
+
+.cosmoboys-wrapper .cosmoboys-rolls .cosmoboys-roll-cosmo {
+    text-align: right;
+}
+
+.cosmoboys-wrapper .cosmoboys-numbers-list {
+    font-family: 'Corki-Regular';
+    font-size: var(--font-size-28);
+
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+    display: -webkit-flex;
+    -webkit-flex-direction: row;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    border: 1px solid #000;
+}
+
+.cosmoboys-wrapper .cosmoboys-numbers-list li {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+    cursor: pointer;
+    text-align: center;
+    color: var(--cosmoboys-color-gray);
+    padding-top: 28px;
+    border-right: 1px solid #000;
+    margin: 0;
+}
+
+.cosmoboys-wrapper .cosmoboys-numbers-list li:last-child {
+    border: 0;
+}
+
+.cosmoboys-wrapper .cosmoboys-numbers-bottom {
+    text-align: center;
+}
+
+.cosmoboys-wrapper .cosmoboys-numbers-list li.active {
+    color: #000;
+    font-weight: bold;
+    font-size: var(--font-size-48);
+    padding-top: 16px;
+    padding-bottom: 9px;
+}
+
+.cosmoboys-wrapper .cosmoboys-items-title {
+    font-size: var(--font-size-24);
+    font-family: 'Corki-Regular';
+}
+
+.cosmoboys-items-list input {
+    -webkit-box-shadow: -5px 5px 4px -1px rgba(87, 52, 37, 0.47);
+    -moz-box-shadow: -5px 5px 4px -1px rgba(87, 52, 37, 0.47);
+    box-shadow: -5px 5px 4px -1px rgba(87, 52, 37, 0.47);
+}
+
+/* all */
+
+body.system-cosmoboys {
+    background-image: url('../assets/back.jpg');
+}
+
+body.system-cosmoboys::before {
+    content: url('../assets/logo-c.png');
+    position: absolute;
+    top: 2%;
+    left: 39%;
 }

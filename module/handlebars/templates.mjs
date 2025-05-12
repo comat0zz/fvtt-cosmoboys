@@ -1,3 +1,5 @@
+import { SYSTEM } from "../configs/system.mjs";
+
 // Список в отдельном месте, ибо этот момент хочу сделать один раз
 import { TemplatesList } from './template_list.mjs';
 
@@ -13,7 +15,7 @@ export const preloadHandlebarsTemplates = async function() {
     for (const [group, tpls] of Object.entries(TemplatesList)) {
         tpls.forEach(el => {
           const key = el.split(/(.*)\.hbs/)[1].replaceAll("/", '-');
-          templatePaths[key] = `${game.template_path}/${el}`;
+          templatePaths[key] = `${SYSTEM.template_path}/${el}`;
         })
       };
     

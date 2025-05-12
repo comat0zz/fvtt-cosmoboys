@@ -20,6 +20,11 @@
   "styles": [
     "styles/cosmoboys.css"
   ],
+  "documentTypes": {
+    "Actor": {
+      "hero": { "htmlFields": ["description", "flash.desc", "archetype.desc"] }
+    }
+  },
   "packs": [
     {
       "name": "cosmo-rolltables",

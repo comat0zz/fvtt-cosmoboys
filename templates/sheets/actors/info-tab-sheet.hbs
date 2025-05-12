@@ -1,0 +1,47 @@
+<section class="tab info {{tab.cssClass}}" data-tab="info" data-group="primary">
+    <div class="{{cssClass}} cosmoboys-wrapper">
+
+    <div class="cosmoboys-row margin-5px">
+        <div class="cosmoboys-column">
+            {{localize "CBOYS.Actor.description"}}
+        </div>
+    </div>
+    <div class="cosmoboys-row margin-5px">
+        <div class="cosmoboys-column">
+            {{formInput systemFields.description enriched=enrichedDescription value=system.description name="system.description" toggled=true}}
+        </div>
+    </div>
+    <div class="cosmoboys-row margin-5px">
+        <div class="cosmoboys-column">
+            {{localize "CBOYS.Actor.archetype_items"}}
+        </div>
+    </div>
+    <div class="cosmoboys-row margin-5px">
+        <div class="cosmoboys-column">
+            {{formInput systemFields.archetype.fields.desc enriched=enrichedArchetype value=system.archetype.desc name="system.archetype.desc" toggled=true}}
+        </div>
+    </div>
+    <div class="cosmoboys-row margin-5px">
+        <div class="cosmoboys-column">
+            {{localize "CBOYS.Actor.flash_desc"}}
+        </div>
+    </div>
+    <div class="cosmoboys-row margin-5px">
+        <div class="cosmoboys-column">
+            {{formInput systemFields.flash.fields.desc enriched=enrichedFlash value=system.flash.desc name="system.flash.desc" toggled=true}}
+        </div>
+    </div>
+
+    <div class="cosmoboys-row margin-5px">
+        <div class="cosmoboys-column">
+            {{localize "CBOYS.Common.gen"}}
+        </div>
+    </div>
+    <div class="cosmoboys-row margin-5px">
+        <div class="cosmoboys-column">
+            
+        </div>
+    </div>
+
+    </div>
+</section>
