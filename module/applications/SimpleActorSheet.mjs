@@ -38,8 +38,6 @@ export default class SimpleActorSheet extends api.HandlebarsApplicationMixin(she
           resizable: true,
         },
         actions: {
-            rollBoy: SimpleActorSheet.#rollBoy,
-            rollCosmo: SimpleActorSheet.#rollBoy,
             rollGen: SimpleActorSheet.#rollGen
         },
     }
@@ -140,9 +138,8 @@ export default class SimpleActorSheet extends api.HandlebarsApplicationMixin(she
     /** @override */
     _onRender(context, options) {
         super._onRender((context, options))
-        //const rollables = this.element.querySelectorAll(".rollable")
-        // rollables.forEach((d) => d.addEventListener("click", this._onRoll.bind(this)))
-
+        const rollables = this.element.querySelectorAll(".cosmoboys-rollable")
+        rollables.forEach((d) => d.addEventListener("click", this._onRoll.bind(this)))
     }
 
     /**
@@ -156,24 +153,52 @@ export default class SimpleActorSheet extends api.HandlebarsApplicationMixin(she
         this.render();
     }
 
-    static #rollBoy(event, target) {
-        const rollType = target.dataset.rollType;
-        const boy_number = this.actor.system.char_number;
-        const roll = new Roll('2d6').evaluate();
-        const terms = roll.terms//[0].results;
-       // let dice_1 = terms[0].result;
-       // let dice_2 = terms[1].result;
+    async _onRoll(event, target) {
+        const rollType = $(event.currentTarget).data("roll-type");
+        const boy_number = this.actor.system.char_number.value;
+        const roll = await new Roll('2d6').evaluate();
+        const terms = roll.terms[0].results;
+        const total = roll.total;
+        const dice_1 = terms[0].result;
+        const dice_2 = terms[1].result;
+        let succes = false;
+        let flash = false;
+        let trump = false;
+        let flash_trump = false;
 
-        console.log(terms)
-        /*
-        const chatData = {
+        if(flash && trump) {
+            flash_trump = true;
+        }
+        if(dice_1 === dice_2) {
+            flash = true;
+        }
+        if(total == boy_number) {
+            trump = true;
+        }
+        if(rollType == 'boy' && total <= boy_number) {
+            succes = true;
+        }else if(rollType == 'cosmo' && total >= boy_number) {
+            succes = true;
+        }
+
+        const template = await foundry.applications.handlebars.renderTemplate(`${SYSTEM.template_path}/chats/dices-roll.hbs`, {
+            succes: succes,
+            total: total,
+            flash: flash,
+            trump: trump,
+            flash_trump: flash_trump,
+            dice_1: dice_1,
+            dice_2: dice_2,
+            boy_number: boy_number,
+            rollType: rollType,
+            title: game.i18n.localize(`CBOYS.Rolls.roll_${rollType}`)
+        });
+
+        ChatMessage.create({
             user: game.user._id,
             speaker: ChatMessage.getSpeaker(),
             content: template
-           };
-           let foo = ChatMessage.applyRollMode(chatData, "gmroll");
-           ChatMessage.create(foo);
-        */
+        });
     }
 
     static #rollGen(event, target) {

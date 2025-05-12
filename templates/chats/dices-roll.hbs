@@ -1,1 +1,30 @@
-dices-roll.hbs
+<div class="cosmoboys-rolls">
+<h5>{{title}}</h5>
+<div class="cosmoboys-rolls-result">
+    {{#if succes}}
+        {{localize "CBOYS.Rolls.success"}}
+    {{else}}
+        {{localize "CBOYS.Rolls.failure"}}
+    {{/if}}
+</div>
+<div class="cosmoboys-rolls-number">
+    {{localize "CBOYS.Rolls.you_number"}}: {{boy_number}}
+</div>
+<div class="cosmoboys-rolls-total">
+    {{dice_1}} + {{dice_2}} = {{total}} 
+</div>
+{{#if flash_trump}}
+<div class="cosmoboys-rolls-extends">
+    <div class="cosmoboys-rolls-title">{{localize "CBOYS.Rolls.you_flash_trump"}}</div>
+    <p>{{localize "CBOYS.Rolls.you_flash_trump_desc"}}</p>
+</div>
+{{else if flash}}
+<div class="cosmoboys-rolls-extends">
+    <div class="cosmoboys-rolls-title">{{localize "CBOYS.Rolls.you_flash"}}</div>
+</div>
+{{else if trump}}
+<div class="cosmoboys-rolls-extends">
+    <div class="cosmoboys-rolls-title">{{localize "CBOYS.Rolls.you_trump"}}</div>
+</div>
+{{/if}}
+</div>
