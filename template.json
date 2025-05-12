@@ -6,11 +6,18 @@
     },
     "templates": {
         "baseActor": {
-            "nickname": "",
             "description": "",
-            "items": [],
+            "items": {
+                "item_1": "",
+                "item_2": "",
+                "item_3": "",
+                "item_4": "",
+                "item_5": "",
+                "item_6": "",
+                "item_all": []
+            },
             "char_number": 7,
-            "hp": 0,
+            "wound": 0,
             "archetype": "",
             "flash": "",
             "flash_desc": "",

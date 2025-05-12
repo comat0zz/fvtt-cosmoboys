@@ -1,3 +1,124 @@
-<form class="{{cssClass}}" autocomplete="off" data-owner-id="{{actor.id}}">
-gero
+<form class="{{cssClass}} cosmoboys-wrapper" autocomplete="off" data-owner-id="{{actor.id}}">
+<div class="cosmoboys-row">
+    <div class="cosmoboys-column cosmoboys-logo">w</div>
+</div>
+<div class="cosmoboys-row">
+    <div class="cosmoboys-column cosmoboys-name">
+        <input type="text" name="name" value="{{actor.name}}" />
+    </div>
+</div>
+
+<div class="cosmoboys-row cosmoboys-sides">
+    <div class="cosmoboys-column cosmoboys-sides-left">
+        <div class="cosmoboys-row">
+            <div class="cosmoboys-column">
+                <div class="cosmoboys-row">
+                    <div class="cosmoboys-column">
+                        <input type="text" name="" value="" />
+                    </div>
+                </div>
+                <div class="cosmoboys-row">
+                    <div class="cosmoboys-column">
+                        {{localize "CBOYS.Actor.archetype"}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cosmoboys-row">
+            <div class="cosmoboys-column">
+                <div class="cosmoboys-row">
+                    <div class="cosmoboys-column">
+                        <input type="text" name="" value="" />
+                    </div>
+                </div>
+                <div class="cosmoboys-row">
+                    <div class="cosmoboys-column">
+                        {{localize "CBOYS.Actor.flash"}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cosmoboys-row">
+            <div class="cosmoboys-column">
+                <div class="cosmoboys-row">
+                    <div class="cosmoboys-column">
+                        <input type="text" name="" value="" />
+                    </div>
+                </div>
+                <div class="cosmoboys-row">
+                    <div class="cosmoboys-column">
+                        {{localize "CBOYS.Actor.carriage"}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cosmoboys-row">
+            <div class="cosmoboys-column">
+                <div class="cosmoboys-row">
+                    <div class="cosmoboys-column">
+                        <input type="text" name="" value="" />
+                    </div>
+                </div>
+                <div class="cosmoboys-row">
+                    <div class="cosmoboys-column">
+                        {{localize "CBOYS.Actor.weapon"}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cosmoboys-column cosmoboys-sides-right">
+        <img src="{{actor.img}}" data-edit="img" data-action="editImage" data-tooltip="{{actor.name}}" />
+    </div>
+</div>
+<!-- end: cosmoboys-sides -->
+
+<div class="cosmoboys-row cosmoboys-wounds">
+    <div class="cosmoboys-column"></div>
+    <div class="cosmoboys-column cosmoboys-wounds-line">
+раны
+    </div>
+</div>
+
+<div class="cosmoboys-row cosmoboys-rolls">
+    <div class="cosmoboys-column">{{localize "CBOYS.Actor.boy"}}</div>
+    <div class="cosmoboys-column"></div>
+    <div class="cosmoboys-column">{{localize "CBOYS.Actor.cosmo"}}</div>
+</div>
+
+<div class="cosmoboys-row cosmoboys-numbers">
+    <div class="cosmoboys-column">
+        1 2 3
+    </div>
+</div>
+
+<div class="cosmoboys-row cosmoboys-items-title">
+    <div class="cosmoboys-column">{{localize "CBOYS.Actor.items"}}</div>
+</div>
+
+<div class="cosmoboys-row cosmoboys-items-list">
+    <div class="cosmoboys-column">
+        <div class="cosmoboys-row">
+            <div class="cosmoboys-column"><input type="text" name="system.items.item_1" value="{{system.items.item_1}}" /></div>
+        </div>
+        <div class="cosmoboys-row">
+            <div class="cosmoboys-column"><input type="text" name="system.items.item_2" value="{{system.items.item_2}}" /></div>
+        </div>
+        <div class="cosmoboys-row">
+            <div class="cosmoboys-column"><input type="text" name="system.items.item_3" value="{{system.items.item_3}}" /></div>
+        </div>
+    </div>
+    <div class="cosmoboys-column">
+        <div class="cosmoboys-row">
+            <div class="cosmoboys-column"><input type="text" name="system.items.item_4" value="{{system.items.item_4}}" /></div>
+        </div>
+        <div class="cosmoboys-row">
+            <div class="cosmoboys-column"><input type="text" name="system.items.item_5" value="{{system.items.item_5}}" /></div>
+        </div>
+        <div class="cosmoboys-row">
+            <div class="cosmoboys-column"><input type="text" name="system.items.item_6" value="{{system.items.item_6}}" /></div>
+        </div>
+    </div>
+</div>
+
 </form>

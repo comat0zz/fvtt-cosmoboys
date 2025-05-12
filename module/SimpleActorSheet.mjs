@@ -4,13 +4,13 @@
  */
 export class SimpleActorSheet extends foundry.applications.api.HandlebarsApplicationMixin(foundry.applications.sheets.ActorSheetV2) {
     /** @override */
-    DEFAULT_OPTIONS = {
+    static DEFAULT_OPTIONS = {
         position: {
-            width: 900,
+            width: 580,
             height: "auto"
         },
         classes: [
-          game.system.id,
+          "cosmoboys",
           "sheet",
           "actor"
         ],
@@ -36,12 +36,20 @@ export class SimpleActorSheet extends foundry.applications.api.HandlebarsApplica
 
     /** @override */
     async _prepareContext(options) {
-        var context = await super._prepareContext(options);
-        context.editable = this.options.editable;
-        context.actor = context.data;
-        context.system = context.document.system;
+        
+        const context = {
+            //fields: this.document.schema.fields,
+            //systemFields: this.document.system.schema.fields,
+            actor: this.document,
+            system: this.document.system,
+            source: this.document.toObject(),
+            enrichedDescription: await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.document.system.description, { async: true }),
+            isEditMode: this.isEditMode,
+            isPlayMode: this.isPlayMode,
+            isEditable: this.isEditable
+        }
 
-        game.logger.log(context)
+        game.logger.log(context);
         return context;
     }
 
