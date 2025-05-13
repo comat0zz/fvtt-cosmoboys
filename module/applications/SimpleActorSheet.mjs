@@ -36,10 +36,7 @@ export default class SimpleActorSheet extends api.HandlebarsApplicationMixin(she
         },
         window: {
           resizable: true,
-        },
-        actions: {
-            rollGen: SimpleActorSheet.#rollGen
-        },
+        }
     }
 
     /**
@@ -208,7 +205,7 @@ export default class SimpleActorSheet extends api.HandlebarsApplicationMixin(she
             // в итоге выше уберет больше одного, 
             // а раз кубы убрало, значит надо дополнить, мы знаем какие - mm_num
             while(filteredNumbers.length < 2) {
-                filteredNumbers.push(min)
+                filteredNumbers.push(mm_num)
             }
 
             dice_1 = filteredNumbers[0];
