@@ -44,6 +44,16 @@ Hooks.once("init", async function() {
     label: "TYPES.Actor.Hero"
   });
 
+  await game.settings.register(SYSTEM.id, 'checkFlashD12', {
+    name: game.i18n.localize("CBOYS.Common.checkFlash"),
+    hint: game.i18n.localize("CBOYS.Common.checkFlashHint"),
+    scope: 'world',
+    config: true,
+    type: Boolean,
+    default: true,
+    requiresReload: false
+  });
+
   // Activate socket handler
   game.socket.on(`system.${SYSTEM.id}`, handleSocketEvent)
 

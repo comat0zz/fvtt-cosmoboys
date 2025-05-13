@@ -23,6 +23,12 @@
             <td>{{localize "CBOYS.Rolls.variants.flash"}}</td>
             <td>{{dice_1}} + {{dice_2}}</td>
         </tr>
+            {{#if checkFlashD12}}
+            <tr>
+                <td>{{localize "CBOYS.Rolls.roll_flash"}}</td>
+                <td>{{rollFlashTotal}}</td>
+            </tr>
+            {{/if}}
         {{/if}}
         {{#if trump}}
         <tr>
@@ -54,6 +60,11 @@
     <div class="cosmoboys-rolls-extends">
         <div class="cosmoboys-rolls-title">{{localize "CBOYS.Rolls.you_flash"}}</div>
     </div>
+        {{#if checkFlashD12}}
+        <div class="cosmoboys-rolls-extends">
+            <div class="cosmoboys-rolls-title">{{localize "CBOYS.Rolls.roll_flash"}}: {{rollFlashTotal}}</div>
+        </div>
+        {{/if}}
     {{else if trump}}
     <div class="cosmoboys-rolls-extends">
         <div class="cosmoboys-rolls-title">{{localize "CBOYS.Rolls.you_trump"}}</div>

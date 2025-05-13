@@ -335,12 +335,20 @@ export default class SimpleActorSheet extends api.HandlebarsApplicationMixin(she
         }else if(rollType == 'cosmo' && total >= boy_number && !isHelp) {
             succes = true;
         }
+        let rollFlashTotal = "";
+        const checkFlashD12 = game.settings.get(SYSTEM.id,'checkFlashD12');
+        if(checkFlashD12) {
+            const rollFlash = await new Roll("1d12").evaluate();
+            rollFlashTotal = rollFlash.total;
+        }
 
         const template = await foundry.applications.handlebars.renderTemplate(`${SYSTEM.template_path}/chats/dices-roll.hbs`, {
             succes: succes,
             total: total,
             flash: flash,
             trump: trump,
+            checkFlashD12: checkFlashD12,
+            rollFlashTotal: rollFlashTotal,
             trump_text: trump_text,
             flash_trump: flash_trump,
             dice_1: dice_1,

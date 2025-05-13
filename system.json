@@ -65,6 +65,6 @@
   "gridDistance": 1,
   "gridUnits": "m",
   "url": "https://github.com/comat0zz/fvtt-cosmoboys",
-  "manifest": "https://github.com/comat0zz/fvtt-cosmoboys//system.json",
-  "download": "https://github.com/comat0zz/fvtt-cosmoboys//see-you-in-hell.zip"
+  "manifest": "https://github.com/comat0zz/fvtt-cosmoboys/releases/download/fvtt13-1.0/system.json",
+  "download": "https://github.com/comat0zz/fvtt-cosmoboys/releases/download/fvtt13-1.0/cosmoboys.zip"
 }
