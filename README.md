@@ -1,6 +1,6 @@
 # fvtt-cosmoboys
 
-Системя для [Foundry VTT v13+](https://foundryvtt.com/ "Что ещё за фаундри такой?") на русском языке. 
+Системя для НРИ Космопарни на [Foundry VTT v13+](https://foundryvtt.com/ "Что ещё за фаундри такой?") на русском языке. 
 
 Пакет разработан под руководством авторов игры [Студии «Просто Ё»](https://t.me/studio_prostoe "Канал в Telegram")
 
