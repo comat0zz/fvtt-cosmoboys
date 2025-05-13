@@ -147,11 +147,24 @@ export default class SimpleActorSheet extends api.HandlebarsApplicationMixin(she
         putNumberChar.forEach((d) => d.addEventListener("click", this._onSetCharNumber.bind(this)))
 
         const changeWound = this.element.querySelectorAll(".cosmoboys-wounds-line")
-        changeWound.addEventListener("click", this._onSetWoundMinus.bind(this))
+        changeWound.forEach((d) => d.addEventListener("click", this._onSetWoundMinus.bind(this)))
+
+        const changeWound2 = this.element.querySelectorAll(".cosmoboys-wounds-line")
+        changeWound2.forEach((d) => d.addEventListener("contextmenu", this._onSetWoundPlus.bind(this)))
     }
 
     async _onSetWoundMinus(event, target) {
+        const wound = parseInt(this.actor.system.wound.value);
+        if(wound > 0) {
+            this.actor.update({ ['system.wound.value']: wound - 1 });
+        }
+    }
 
+    async _onSetWoundPlus(event, target) {
+        const wound = parseInt(this.actor.system.wound.value);
+        if(wound < 5) {
+            this.actor.update({ ['system.wound.value']: wound + 1 });
+        }
     }
 
     async _onSetCharNumber(event, target) {
