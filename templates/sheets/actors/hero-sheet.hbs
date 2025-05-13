@@ -128,22 +128,20 @@
 
 <div class="cosmoboys-row cosmoboys-rolls">
     <div class="cosmoboys-column cosmoboys-roll-boy cosmoboys-rollable" data-roll-type="boy">{{localize "CBOYS.Actor.boy"}}</div>
-    <div class="cosmoboys-column"></div>
+    <div class="cosmoboys-column cosmoboys-roll-help">
+        <div class="cosmoboys-row">
+            <label><input type="checkbox" class="roll-help-check"> {{localize "CBOYS.Rolls.you_help"}}</label>
+        </div>
+    </div>
     <div class="cosmoboys-column cosmoboys-roll-cosmo cosmoboys-rollable" data-roll-type="cosmo">{{localize "CBOYS.Actor.cosmo"}}</div>
 </div>
 
 <div class="cosmoboys-row cosmoboys-numbers">
     <div class="cosmoboys-column">
         <ul class="cosmoboys-numbers-list">
-            <li>3</li>
-            <li>4</li>
-            <li>5</li>
-            <li>6</li>
-            <li class="active">7</li>
-            <li>8</li>
-            <li>9</li>
-            <li>10</li>
-            <li>11</li>
+            {{#each arrayNumbers as |item|}}
+            <li data-num="{{item}}"{{#ife item ../actor_char_number}} class="active"{{/ife}}>{{item}}</li>
+            {{/each}}
         </ul>
     </div>
 </div>

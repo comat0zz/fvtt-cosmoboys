@@ -53,7 +53,7 @@ form.cosmoboys .window-content {
     display: none;
 }
 #chat .chat-log .chat-message {
-    padding: 29px
+    padding: 15px 19px;
 }
 
 /* Story Roll */
@@ -91,6 +91,46 @@ form.cosmoboys .window-content {
 }
 
 /* Dices Roll */
+.cosmoboys-rolls .title {
+    font-size: var(--font-size-16);
+    font-family: 'Corki-Regular';
+    text-align: center;
+}
+
+.cosmoboys-rolls-total {
+    text-align: center;
+    font-family: 'Corki-Regular';
+    font-size: var(--font-size-24);
+}
+
+.cosmoboys-rolls-number {
+    text-align: center;
+    font-family: 'Corki-Regular';
+    font-size: var(--font-size-14);
+}
+
+.cosmoboys-rolls-result {
+    text-align: center;
+    font-size: var(--font-size-16);
+    font-family: 'Lumberjack Rough';
+}
+
+.cosmoboys-rolls-extends {
+    text-align: center;
+    font-size: var(--font-size-24);
+    font-family: 'Corki-Regular';
+}
+
+.cosmoboys-rolls-expand {
+    margin: 0;
+    padding: 0;
+    font-family: 'Corki-Regular';
+    font-size: var(--font-size-14);
+}
+.cosmoboys-rolls-expand th,
+.cosmoboys-rolls-expand td:last-child {
+    text-align: center;
+}
 
 /* Actor Sheet */
 .cosmoboys-wrapper {
@@ -225,6 +265,11 @@ form.cosmoboys .window-content {
     -webkit-box-shadow: -5px 5px 4px -1px rgba(87, 52, 37, 0.47);
     -moz-box-shadow: -5px 5px 4px -1px rgba(87, 52, 37, 0.47);
     box-shadow: -5px 5px 4px -1px rgba(87, 52, 37, 0.47);
+}
+
+.cosmoboys-roll-help {
+    font-size: var(--font-size-14);
+    padding-top: 6px;
 }
 
 /* all */

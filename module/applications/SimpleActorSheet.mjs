@@ -118,7 +118,9 @@ export default class SimpleActorSheet extends api.HandlebarsApplicationMixin(she
         context.isPlayMode = this.isPlayMode
         context.isEditable = this.isEditable
 
-    
+        context.arrayNumbers = [3,4,5,6,7,8,9,10,11]
+        context.actor_char_number = context.system.char_number.value
+
         game.logger.log(context)
         return context
     }
@@ -140,44 +142,96 @@ export default class SimpleActorSheet extends api.HandlebarsApplicationMixin(she
         super._onRender((context, options))
         const rollables = this.element.querySelectorAll(".cosmoboys-rollable")
         rollables.forEach((d) => d.addEventListener("click", this._onRoll.bind(this)))
+        
+        const putNumberChar = this.element.querySelectorAll(".cosmoboys-numbers-list li")
+        putNumberChar.forEach((d) => d.addEventListener("click", this._onSetCharNumber.bind(this)))
+
+        const changeWound = this.element.querySelectorAll(".cosmoboys-wounds-line")
+        changeWound.addEventListener("click", this._onSetWoundMinus.bind(this))
     }
 
-    /**
-     * Handle toggling between Edit and Play mode.
-     * @param {Event} event             The initiating click event.
-     * @param {HTMLElement} target      The current target of the event listener.
-     */
-    static #onToggleSheet(event, target) {
-        const modes = this.constructor.SHEET_MODES;
-        this._sheetMode = this.isEditMode ? modes.PLAY : modes.EDIT;
-        this.render();
+    async _onSetWoundMinus(event, target) {
+
+    }
+
+    async _onSetCharNumber(event, target) {
+        const putNumberChar = $(event.currentTarget).data("num");
+        this.actor.update({ ['system.char_number.value']: putNumberChar });
     }
 
     async _onRoll(event, target) {
         const rollType = $(event.currentTarget).data("roll-type");
         const boy_number = this.actor.system.char_number.value;
-        const roll = await new Roll('2d6').evaluate();
-        const terms = roll.terms[0].results;
-        const total = roll.total;
-        const dice_1 = terms[0].result;
-        const dice_2 = terms[1].result;
+        const isHelp = $(event.currentTarget).parent('.cosmoboys-rolls').find('.roll-help-check').is(':checked')
         let succes = false;
         let flash = false;
         let trump = false;
         let flash_trump = false;
+        let formula = '2d6';
+        let dice_3 = "";
+        let trump_text = "";
 
-        if(flash && trump) {
+        if(isHelp) {formula = '3d6'};
+
+        const roll = await new Roll(formula).evaluate();
+        const terms = roll.terms[0].results;
+        const total = roll.total;
+        let dice_1 = terms[0].result;
+        let dice_2 = terms[1].result;
+
+        if(isHelp) {
+            dice_3 = terms[2].result;
+            let arrValues = [dice_1, dice_2, dice_3];
+            let mm_num;
+            if(rollType == 'boy') {
+                mm_num = Math.max.apply(null, arrValues);
+            }else if(rollType == 'cosmo') {
+                // Нужно откинуть наименьший куб
+                // чтобы в первых двух получить максимум 
+                mm_num = Math.min.apply(null, arrValues);
+            }
+            let filteredNumbers = arrValues.filter((number) => number !== mm_num);
+            // может быть ситуация, когда выпало три одинаковых или два, 
+            // в итоге выше уберет больше одного, 
+            // а раз кубы убрало, значит надо дополнить, мы знаем какие - mm_num
+            while(filteredNumbers.length < 2) {
+                filteredNumbers.push(min)
+            }
+
+            dice_1 = filteredNumbers[0];
+            dice_2 = filteredNumbers[1];
+            dice_3 = mm_num;
+
+            if(dice_1 === dice_2) {
+                flash = true;
+            }
+
+            // попробуем проверить на козыря
+            if( (dice_1 + dice_2) == boy_number) {
+                trump = true;
+                trump_text = `${dice_1} + ${dice_2}`;
+            }else if((dice_1 + dice_3) == boy_number) {
+                trump = true;
+                trump_text = `${dice_1} + ${dice_3}`;
+            }else if((dice_2 + dice_3) == boy_number) {
+                trump = true;
+                trump_text = `${dice_2} + ${dice_3}`;
+            }
+
+        }
+
+        if(flash && trump && !isHelp) {
             flash_trump = true;
         }
-        if(dice_1 === dice_2) {
+        if(dice_1 === dice_2 && !isHelp) {
             flash = true;
         }
-        if(total == boy_number) {
+        if(total == boy_number && !isHelp) {
             trump = true;
         }
-        if(rollType == 'boy' && total <= boy_number) {
+        if(rollType == 'boy' && total <= boy_number && !isHelp) {
             succes = true;
-        }else if(rollType == 'cosmo' && total >= boy_number) {
+        }else if(rollType == 'cosmo' && total >= boy_number && !isHelp) {
             succes = true;
         }
 
@@ -186,12 +240,16 @@ export default class SimpleActorSheet extends api.HandlebarsApplicationMixin(she
             total: total,
             flash: flash,
             trump: trump,
+            trump_text: trump_text,
             flash_trump: flash_trump,
             dice_1: dice_1,
             dice_2: dice_2,
+            dice_3: dice_3,
+            isHelp: isHelp,
             boy_number: boy_number,
             rollType: rollType,
-            title: game.i18n.localize(`CBOYS.Rolls.roll_${rollType}`)
+            title_name: this.actor.name, //game.user.name;
+            title_desc: game.i18n.localize(`CBOYS.Rolls.roll_${rollType}`)
         });
 
         ChatMessage.create({
