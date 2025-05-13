@@ -148,7 +148,16 @@ export default class SimpleActorSheet extends api.HandlebarsApplicationMixin(she
 
         const changeWound2 = this.element.querySelectorAll(".cosmoboys-wounds-line")
         changeWound2.forEach((d) => d.addEventListener("contextmenu", this._onSetWoundPlus.bind(this)))
+
+        const generate = this.element.querySelectorAll(".cosmoboys-generate button")
+        generate.forEach((d) => d.addEventListener("click", this._onGenerateBoy.bind(this)))
     }
+
+    async _onGenerateBoy(event, target) {
+        event.preventDefault();
+        
+    }
+
 
     async _onSetWoundMinus(event, target) {
         const wound = parseInt(this.actor.system.wound.value);
