@@ -4,7 +4,8 @@
 export const TemplatesList = {
     'ActorSheets': [
         'sheets/actors/hero-sheet.hbs',
-        'sheets/actors/info-tab-sheet.hbs'
+        'sheets/actors/info-tab-sheet.hbs',
+        'sheets/description-gen.hbs'
     ],
     'ItemSheets': [
         'sheets/items/archetype-sheet.hbs',

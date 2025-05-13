@@ -4,7 +4,7 @@
  */
 
 import { SYSTEM } from "../configs/system.mjs";
-
+import * as CztUtility from "../utilities/_module.mjs";
 const { api, sheets } = foundry.applications;
 
 
@@ -149,13 +149,76 @@ export default class SimpleActorSheet extends api.HandlebarsApplicationMixin(she
         const changeWound2 = this.element.querySelectorAll(".cosmoboys-wounds-line")
         changeWound2.forEach((d) => d.addEventListener("contextmenu", this._onSetWoundPlus.bind(this)))
 
-        const generate = this.element.querySelectorAll(".cosmoboys-generate button")
+        const generate = this.element.querySelectorAll(".cosmoboys-generate input")
         generate.forEach((d) => d.addEventListener("click", this._onGenerateBoy.bind(this)))
     }
 
+     // А по другому из компендума заролить только через костыли. 
+     // Знакомьтесь - это один из костылей :)
+     async _getRandomText(data) {
+       const lines = data.collections.results._source;
+       const lines_len = lines.length;
+       const lines_rand = CztUtility.getRandomInt(0, lines_len);
+       return [lines[lines_rand].name, lines[lines_rand].description];
+     }
+     
     async _onGenerateBoy(event, target) {
         event.preventDefault();
+
+        const arrayNumbers = [3,4,5,6,7,8,9,10,11];
+        const indexNumbers = CztUtility.getRandomInt(0, arrayNumbers.length)
+        const char_number = arrayNumbers[indexNumbers]
+
+        const arrayWound = [3,5]
+        const indexWound = CztUtility.getRandomInt(0, 2)
+        const wound = arrayWound[indexWound]
+
+        const rollComp = await game.packs.get('cosmoboys.cosmo-rolltables').getDocuments({ _id__in: 
+            [
+                "y7r6E6z8vLZiqsFU", // Архетипы
+                "KCOxVWdqkZVh05MY", // Вспышки
+                "lxN55wJ2Uhe7d49c", // Имена
+                "74wujyPcno3TijQD", // Оружие
+                "aFzUM9H5aqyoRnJy", // Транспорт 
+            ]})
         
+        
+        const cNamePack = await rollComp.filter(e => e._id === "lxN55wJ2Uhe7d49c")[0];
+        const [cNameValue, cNameDesc] = await this._getRandomText(cNamePack);
+
+        const cFlashPack = await rollComp.filter(e => e._id === "KCOxVWdqkZVh05MY")[0];
+        const [cFlashValue, cFlashDesc] = await this._getRandomText(cFlashPack);
+
+        const cArchPack = await rollComp.filter(e => e._id === "y7r6E6z8vLZiqsFU")[0];
+        const [cArchValue, cArchhDesc] = await this._getRandomText(cArchPack);
+
+        const cWeaponPack = await rollComp.filter(e => e._id === "74wujyPcno3TijQD")[0];
+        const [cWeaponValue, cWeaponDesc] = await this._getRandomText(cWeaponPack);
+
+        const cCarPack = await rollComp.filter(e => e._id === "aFzUM9H5aqyoRnJy")[0];
+        const [cCarValue, cCarDesc] = await this._getRandomText(cCarPack);
+        
+        const template = await foundry.applications.handlebars.renderTemplate(`${SYSTEM.template_path}/sheets/description-gen.hbs`, {
+            "weapon": cWeaponValue,
+            "weapon_desc": cWeaponDesc,
+            "car": cCarValue,
+            "car_desc": cCarDesc,
+            "name_desc": cNameDesc
+        });
+        
+        const actorUpdate = {
+            "name": cNameValue,
+            "system.description": await foundry.applications.ux.TextEditor.implementation.enrichHTML(template, { async: true }),
+            "system.wound.value": wound,
+            "system.char_number.value": char_number,
+            "system.flash.value": cFlashValue,
+            "system.flash.desc": cFlashDesc,
+            "system.archetype.value": cArchValue,
+            "system.archetype.desc": cArchhDesc,
+            "system.weapon.value": cWeaponValue,
+            "system.carriage.value": cCarValue
+        }
+        this.actor.update(actorUpdate);
     }
 
 
@@ -277,9 +340,4 @@ export default class SimpleActorSheet extends api.HandlebarsApplicationMixin(she
             content: template
         });
     }
-
-    static #rollGen(event, target) {
-
-    }
-
 }
