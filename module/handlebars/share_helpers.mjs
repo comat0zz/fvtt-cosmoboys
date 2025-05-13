@@ -3,6 +3,17 @@ import { SYSTEM } from "../configs/system.mjs";
 // Хелперы общего назначения
 export const registerHandlebarsShareHelpers = async function () {
   
+  Handlebars.registerHelper("striptags", function( txt ){
+    console.log(txt)
+    // exit now if text is undefined 
+    if(typeof txt == "undefined") return;
+    // the regular expresion
+    var regexp = /<[\/\w]+>/g
+    // replacing the text
+    return txt.replace(regexp, '');
+    
+  });
+  
   // localize "SYSTEM.WORD.STR." VAL 
   Handlebars.registerHelper('lzCc', function (str, val) {
     return game.i18n.localize(str + val);

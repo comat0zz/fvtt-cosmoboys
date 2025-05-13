@@ -272,6 +272,36 @@ form.cosmoboys .window-content {
     padding-top: 6px;
 }
 
+.cosmoboys-rolls-genchar {
+    margin: 0;
+    padding: 0;
+    font-size: var(--font-size-12);
+    font-family: 'Lumberjack Rough';
+}
+
+.cosmoboys-wounds-gen {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+    display: -webkit-flex;
+    -webkit-flex-direction: row;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.cosmoboys-wounds-gen li {
+    width: 5px;
+    height: 17px;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+}
+
 /* all */
 
 body.system-cosmoboys {

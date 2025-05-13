@@ -1,0 +1,83 @@
+<div class="cosmoboys-rolls">
+    <div class="title"><b>{{user}}</b> {{localize "CBOYS.Common.new_gen"}}<br><b>{{name}}</b></div>
+
+    <table class="cosmoboys-rolls-genchar">
+        <tr>
+            <td colspan="2">{{{striptags name_desc}}}</td>
+        </tr>
+        <tr>
+            <td>{{localize "CBOYS.Actor.char_number"}}</td>
+            <td>{{char_number}}</td>
+        </tr>
+        <tr>
+            <td>{{localize "CBOYS.Actor.hp"}}</td>
+            <td>
+                <ul class="cosmoboys-wounds-gen">
+                    <li>
+                        {{#iflteq 1 wound}}
+                            <img src="{{get_assets "wound-yes.png"}}" />
+                        {{else}}
+                            <img src="{{get_assets "wound-no.png"}}" />
+                        {{/iflteq}}
+                    </li>
+                    <li>
+                        {{#iflteq 2 wound}}
+                            <img src="{{get_assets "wound-yes.png"}}" />
+                        {{else}}
+                            <img src="{{get_assets "wound-no.png"}}" />
+                        {{/iflteq}}
+                    </li>
+                    <li>
+                        {{#iflteq 3 wound}}
+                            <img src="{{get_assets "wound-yes.png"}}" />
+                        {{else}}
+                            <img src="{{get_assets "wound-no.png"}}" />
+                        {{/iflteq}}
+                    </li>
+                    <li>
+                        {{#iflteq 4 wound}}
+                            <img src="{{get_assets "wound-yes.png"}}" />
+                        {{else}}
+                            <img src="{{get_assets "wound-no.png"}}" />
+                        {{/iflteq}}
+                    </li>
+                    <li>
+                        {{#iflteq 5 wound}}
+                            <img src="{{get_assets "wound-yes.png"}}" />
+                        {{else}}
+                            <img src="{{get_assets "wound-no.png"}}" />
+                        {{/iflteq}}
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>{{localize "CBOYS.Actor.archetype"}}</td>
+            <td>{{{cArchValue}}}</td>
+        </tr>
+        <tr>
+            <td colspan="2">{{{cArchhDesc}}}</td>
+        </tr>
+        <tr>
+            <td>{{localize "CBOYS.Rolls.variants.flash"}}</td>
+            <td>{{{cFlashValue}}}</td>
+        </tr>
+        <tr>
+            <td colspan="2">{{{cFlashDesc}}}</td>
+        </tr>
+        <tr>
+            <td>{{localize "CBOYS.Actor.weapon"}}</td>
+            <td>{{{weapon}}}</td>
+        </tr>
+        <tr>
+            <td colspan="2">{{{weapon_desc}}}</td>
+        </tr>
+        <tr>
+            <td>{{localize "CBOYS.Actor.carriage"}}</td>
+            <td>{{{car}}}</td>
+        </tr>
+        <tr>
+            <td colspan="2">{{{striptags car_desc}}}</td>
+        </tr>
+    </table>
+</div>

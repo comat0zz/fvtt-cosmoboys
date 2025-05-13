@@ -198,14 +198,33 @@ export default class SimpleActorSheet extends api.HandlebarsApplicationMixin(she
         const cCarPack = await rollComp.filter(e => e._id === "aFzUM9H5aqyoRnJy")[0];
         const [cCarValue, cCarDesc] = await this._getRandomText(cCarPack);
         
-        const template = await foundry.applications.handlebars.renderTemplate(`${SYSTEM.template_path}/sheets/description-gen.hbs`, {
+        let char = {
             "weapon": cWeaponValue,
-            "weapon_desc": cWeaponDesc,
+            "weapon_desc": cWeaponDesc.replace(/(<([^>]+)>)/gi, ""),
             "car": cCarValue,
-            "car_desc": cCarDesc,
-            "name_desc": cNameDesc
-        });
+            "car_desc": cCarDesc.replace(/(<([^>]+)>)/gi, ""),
+            "name_desc": cNameDesc.replace(/(<([^>]+)>)/gi, "")
+        };
+
+        const template = await foundry.applications.handlebars.renderTemplate(`${SYSTEM.template_path}/sheets/description-gen.hbs`, char);
+
+        char["name"] = cNameValue;
+        char["cArchValue"] = cArchValue;
+        char["cArchhDesc"] = cArchhDesc.replace(/(<([^>]+)>)/gi, "");
+        char["cFlashValue"] = cFlashValue;
+        char["cFlashDesc"] = cFlashDesc.replace(/(<([^>]+)>)/gi, "");
+        char["user"] = game.user.name;
+        char["wound"] = wound;
+        char["char_number"] = char_number;
         
+        const template2 = await foundry.applications.handlebars.renderTemplate(`${SYSTEM.template_path}/chats/gen.hbs`, char);
+
+        ChatMessage.create({
+            user: game.user._id,
+            speaker: ChatMessage.getSpeaker(),
+            content: template2
+        });
+
         const actorUpdate = {
             "name": cNameValue,
             "system.description": await foundry.applications.ux.TextEditor.implementation.enrichHTML(template, { async: true }),
