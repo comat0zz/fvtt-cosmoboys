@@ -4,7 +4,7 @@
 
 Пакет разработан под руководством авторов игры [Студии «Просто Ё»](https://t.me/studio_prostoe "Канал в Telegram")
 
-Пакет в каталоге Foundry VTT: https://foundryvtt.com/packages/yokarny-babay
+Пакет в каталоге Foundry VTT: https://foundryvtt.com/packages/cosmoboys
 
 Книга правил https://rpgbook.ru/PE_Kosmoparni  
 
